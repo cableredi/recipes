@@ -1,0 +1,131 @@
+:root {
+  --background-color: linear-gradient(#121214, #272629);
+  --font-color: #434344;
+  --error-color: #8b0000;
+  --hover-color: #0039e6;
+  --form-background-color: #d3d3d3;
+  --form-box-shadow-color: rgba(0, 0, 0, 0.4);
+  --form-font-color: #46454a;
+  --form-input-background-color: #f0f0f0;
+  --form-input-font-color: #46454a;
+  --button-background-color: #585858;
+  --button-font-color: #d0cfd6;
+  --menu-background-color: #e6ecff;
+  --menu-font-color: #46454a;
+  --editor-background-color: #eeeeee;
+  --font-roboto: "Roboto";
+  --font-irish: "Irish_Grover";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--font-color);
+  background-color: (--background-color);
+  min-height: 100vh;
+  margin-bottom: 20px;
+  font-family: var(--font-roboto);
+}
+
+h1 {
+  font-size: 2rem;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+main {
+  margin-left: 210px;
+  margin-top: 20px;
+}
+
+.errors {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: var(--error-color);
+  font-size: 0.8rem;
+  font-style: italic;
+}
+
+.plainButton {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin-left: 10px;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+.roboto {
+  font-family: var(--font-roboto);
+}
+
+.irish {
+  font-family: var(--font-irish);
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+table {
+  border-collapse: collapse;
+}
+
+table thead th {
+  color: var(--logo-color);
+  font-size: 18px;
+  background-color: var(--background-color);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+table tbody td {
+  font-size: 14px;
+  vertical-align: top;
+}
+
+table th,
+table td {
+  padding: 5px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.plainButtonTrash {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+  outline: inherit;
+}
+
+svg {
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.button {
+  margin-bottom: 20px;
+}

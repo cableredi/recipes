@@ -1,0 +1,75 @@
+// To update the database:
+// npx prisma db push -> push to database
+// npx prisma generate -> add to prisma client
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  sessions     Session[]
+  firstName    String
+  lastName     String
+  email        String    @unique
+  role         String    @default("cook")
+  passwordHash String
+}
+
+model Session {
+  id        String   @id
+  expiresAt DateTime
+  userId    String
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
+}
+
+model Roles {
+  role_id     Int       @id @default(autoincrement())
+  name        String    @unique
+}
+
+model Categories {
+  category_id Int       @id @default(autoincrement())
+  name        String    @unique
+  recipes     Recipes[]
+}
+
+model Recipes {
+  recipe_id   Int           @id @default(autoincrement())
+  name        String
+  note        String?
+  image       String?
+  category    Categories    @relation(fields: [category_id], references: [category_id])
+  category_id Int
+  steps       Steps[]
+  ingredients Ingredients[]
+}
+
+model Steps {
+  step_id     Int     @id @default(autoincrement())
+  step_number Int
+  instruction String
+  recipe      Recipes @relation(fields: [recipe_id], references: [recipe_id], onDelete: Cascade)
+  recipe_id   Int
+}
+
+model Ingredients {
+  ingredient_id Int     @id @default(autoincrement())
+  topic         String
+  recipe        Recipes @relation(fields: [recipe_id], references: [recipe_id], onDelete: Cascade)
+  recipe_id     Int
+  items         Items[]
+}
+
+model Items {
+  item_id       Int         @id @default(autoincrement())
+  name          String
+  amount        String
+  ingredient    Ingredients @relation(fields: [ingredient_id], references: [ingredient_id], onDelete: Cascade)
+  ingredient_id Int
+}
