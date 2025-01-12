@@ -41,7 +41,7 @@ a {
 }
 
 main {
-  margin-left: 210px;
+  margin-left: 110px;
   margin-top: 20px;
 }
 
@@ -84,6 +84,13 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 
 table {
   border-collapse: collapse;

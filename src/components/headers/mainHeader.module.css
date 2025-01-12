@@ -1,0 +1,12 @@
+.head {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 15px;
+}
+
+.head svg {
+  font-size: 1.7rem;
+  vertical-align: middle;
+}

@@ -1,0 +1,37 @@
+.aside {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 190px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: var(--menu-background-color);
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding: 20px 20px 30px 20px;
+}
+
+.aside h3 {
+  margin-top: 0px;
+  margin-bottom: 10px;
+  color: var(--menu-font-color)
+}
+
+.aside li {
+  margin-left: 1em;
+  margin-bottom: 10px;
+}
+
+.aside li a {
+  font-weight: bold;
+  color: var(--menu-font-color);
+}
+
+.aside li a:hover {
+  color: var(--hover-color);
+}
+
+.aside ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
