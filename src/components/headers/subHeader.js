@@ -1,8 +1,6 @@
 import styles from "./subHeader.module.css";
 
-export default function SubHeader(props) {
-  const name = props.name;
-
+export default function SubHeader({ name }) {
   return (
     <header className={styles.head}>
       <h2>{name}</h2>

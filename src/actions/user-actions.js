@@ -132,6 +132,6 @@ export async function editRoleAction(prevState, formData) {
     };
   }
 
-  revalidatePath("/users");
-  redirect("/users");
+  revalidatePath("/settings/users");
+  redirect("/settings/users");
 }

@@ -4,6 +4,7 @@
   justify-content: flex-start;
   align-items: center;
   gap: 15px;
+  border-bottom: 2px solid var(--font-color);
 }
 
 .head svg {

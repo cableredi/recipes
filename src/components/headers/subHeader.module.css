@@ -1,4 +1,5 @@
 .head {
   margin: 20px 0;
   color: var(--font-color);
+  border-bottom: 2px solid var(--font-color);
 }

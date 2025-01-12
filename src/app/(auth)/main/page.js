@@ -1,4 +1,6 @@
 import { redirect } from "next/navigation";
+
+import SubHeader from "@/components/headers/subHeader";
 import { getAuth } from "@/lib/auth/cookie";
 
 export default async function MainPage() {
@@ -8,11 +10,5 @@ export default async function MainPage() {
     redirect("/");
   }
 
-  return (
-    <>
-      <main>
-        <h3>Welcome {user.firstName}!</h3>
-      </main>
-    </>
-  );
+  return <SubHeader name={`Welcome ${user.firstName}!`} />;
 }

@@ -1,0 +1,40 @@
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  column-gap: 7px;
+}
+
+.userForm div {
+  margin-bottom: 10px;
+}
+
+.userForm label,
+.flex label {
+  margin: 5px 10px;
+  font-weight: bold;
+}
+
+.userForm input {
+  margin: 5px 0;
+  padding: 2px;
+}
+
+.userForm input[type="radio"] {
+  vertical-align: baseline;
+}
+
+.userForm input[type="submit"] {
+  margin-top: 15px;
+}
+
+.userForm button {
+  margin-top: 10px;
+  padding: 2px 8px;
+  font-size: 14px;
+}
+
+.userForm table td {
+  padding-right: 20px;
+}

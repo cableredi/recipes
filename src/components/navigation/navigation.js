@@ -44,7 +44,7 @@ export default async function Navigation() {
 
           <ul>
             <li>
-              <Link href="/users">Users</Link>
+              <Link href="/settings/users">Users</Link>
             </li>
             <li>
               <Link href="/settings/profile">Profile</Link>
