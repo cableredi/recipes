@@ -1,0 +1,54 @@
+.flex {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  column-gap: 20px;
+}
+
+.addItem {
+  margin-left: 50px;
+}
+
+.recipeForm div {
+  margin-bottom: 10px;
+}
+
+.recipeForm label {
+  margin: 5px 10px;
+  font-weight: bold;
+}
+
+.recipeForm input {
+  margin: 5px 0;
+  padding: 2px;
+}
+
+.recipeForm input[type="radio"] {
+  vertical-align: baseline;
+}
+
+.recipeForm input[type="submit"] {
+  margin-top: 15px;
+}
+
+.recipeForm h3 {
+  margin-bottom: 20px;
+}
+
+.recipeForm button {
+  margin-top: 10px;
+  padding: 2px 8px;
+  font-size: 14px;
+}
+
+.noimage {
+  margin-top: 20px;
+  color: var(--error-color);
+  font-style: italic;
+  width: 300px;
+  height: 300px;
+  border: 1px solid rgb(164, 171, 185);
+  text-align: center;
+  line-height: 250px;
+}
