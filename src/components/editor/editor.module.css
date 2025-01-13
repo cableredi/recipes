@@ -1,0 +1,36 @@
+.ProseMirror * {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.editor {
+  margin-top: 10px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.flex {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+
+.flex svg {
+  margin-left: 0;
+}
+
+.inputBox {
+  background-color: var(--editor-background-color);
+  padding: 5px 10px;
+}
+
+.paragraph {
+  margin: 5px 0;
+}
+
+.is-active {
+  background-color: var(--button-background-color);
+  color: var(--button-font-color);
+}

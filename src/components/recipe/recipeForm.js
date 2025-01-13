@@ -4,7 +4,7 @@ import React from "react";
 
 import { useActionState, useState, useEffect } from "react";
 import { editRecipeNotesAction } from "@/actions/recipe-actions";
-import EditorFormSubmit from "@/components/buttons/editorFormSubmit";
+import EditorSubmitButton from "@/components/buttons/editorSubmitButton";
 import Tiptap from "../editor/editor";
 
 import styles from "./recipeForm.module.css";
@@ -76,17 +76,6 @@ export default function RecipeForm({ initialData, recipeData }) {
           <div className={styles.instructions}>
             <h3>Instructions</h3>
 
-            {/* <table>
-              <tbody>
-                {recipeData.steps.map((step) => (
-                  <tr key={step.step_id}>
-                    <td className={styles.tableHeaders}>{step.step_number}.</td>
-                    <td>{step.instruction}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table> */}
-
             <div>
               {recipeData.steps.map((step) => (
                 <div className={styles.instructionGrid} key={step.step_id}>
@@ -120,7 +109,7 @@ export default function RecipeForm({ initialData, recipeData }) {
                   value={formData.recipe_id || ""}
                 />
 
-                <EditorFormSubmit btnPending="Saving" btnName="Save" />
+                <EditorSubmitButton btnPending="Saving" btnName="Save" />
               </div>
             </form>
           </div>
