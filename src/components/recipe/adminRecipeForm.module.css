@@ -14,6 +14,14 @@
   margin-bottom: 10px;
 }
 
+.recipeForm svg {
+  vertical-align: top;
+}
+
+.recipeForm table td button {
+  margin-top: 0;
+}
+
 .recipeForm label {
   margin: 5px 10px;
   font-weight: bold;

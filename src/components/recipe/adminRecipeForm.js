@@ -450,62 +450,6 @@ export default function AdminRecipeForm({
       <div>
         <h3>Instructions</h3>
 
-        {/* <div className={styles.flex}>
-          <div>
-            <div>
-              {formData.steps?.map((step, index) => (
-                <div key={index} className={styles.flex}>
-                  <input
-                    type="hidden"
-                    id="stepId"
-                    name="stepId"
-                    value={step.step_id || ""}
-                  />
-
-                  <div>
-                    <button
-                      type="button"
-                      onClick={() => removeStep(index)}
-                      className="plainButtonTrash"
-                    >
-                      <IoTrashOutline />
-                    </button>
-                  </div>
-
-                  <div className={styles.order}>{index + 1}</div>
-
-                  <div className={styles.instruction}>
-                    <textarea
-                      id="instruction"
-                      name="instruction"
-                      rows="4"
-                      cols="50"
-                      value={step.instruction || ""}
-                      onChange={(e) => {
-                        const updatedSteps = formData.steps.map((s, idx) =>
-                          idx === index
-                            ? { ...s, instruction: e.target.value }
-                            : s
-                        );
-                        setFormData({ ...formData, steps: updatedSteps });
-                      }}
-                    />
-                  </div>
-                  {data.error?.instruction && (
-                    <div className="errors">{data.error.instruction}</div>
-                  )}
-                </div>
-              ))}
-              <button type="button" onClick={addStep}>
-                Add Instruction Step
-              </button>
-            </div>
-            {data.error?.steps && (
-              <div className="errors">{data.error.steps}</div>
-            )}
-          </div>
-        </div> */}
-
         <div>
           <table>
             <thead>
@@ -613,11 +557,12 @@ export default function AdminRecipeForm({
                                 <td>{stepIndex + 1}</td>
 
                                 <td>
-                                  <input
-                                    type="text"
+                                  <textarea
                                     id="instruction"
                                     name="instruction"
                                     value={step.instruction || ""}
+                                    rows="4"
+                                    cols="50"
                                     onChange={(e) => {
                                       const updatedInstructions =
                                         formData.instructions.map(
