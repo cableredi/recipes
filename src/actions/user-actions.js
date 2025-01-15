@@ -106,7 +106,7 @@ export async function editUserAction(prevState, formData) {
 
     editUser(userData);
   } catch (error) {
-    console.log(`Update user error:  ${error.code}`);
+    console.log(`Update user error:  ${error}`);
 
     return {
       errors: { error: "Unable to update your profile" },
