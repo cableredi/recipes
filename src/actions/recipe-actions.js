@@ -58,16 +58,6 @@ function validateRecipe(recipe) {
       "Please enter at least one ingredient topic and item .";
   }
 
-  // if (recipe.steps.length > 0) {
-  //   recipe.steps.map((step) => {
-  //     if (!step.instruction || step.instruction.trim() === "") {
-  //       errors.instruction = "Instruction cannot be blank .";
-  //     }
-  //   });
-  // } else {
-  //   errors.steps = "Please enter at least 1 instruction";
-  // }
-
   if (recipe.instructions.length > 0) {
     recipe.instructions.map((instruct) => {
       if (!instruct.topic || instruct.topic.trim() === "") {
@@ -96,7 +86,6 @@ export async function addRecipeAction(prevState, formData) {
     name: formData.get("recipe_name"),
     category_id: Number(formData.get("recipe_category")),
     ingredients: JSON.parse(formData.get("ingredients")),
-    //steps: JSON.parse(formData.get("steps")),
     instructions: JSON.parse(formData.get("instructions")),
   };
 
@@ -118,11 +107,12 @@ export async function editRecipeAction(prevState, formData) {
     name: formData.get("recipe_name"),
     category_id: formData.get("recipe_category"),
     ingredients: JSON.parse(formData.get("ingredients")),
-    //steps: JSON.parse(formData.get("steps")),
     instructions: JSON.parse(formData.get("instructions")),
   };
 
   const errors = validateRecipe(recipe);
+
+  console.log(errors);
 
   if (Object.keys(errors).length != 0) {
     return { error: errors };

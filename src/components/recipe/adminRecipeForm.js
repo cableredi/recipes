@@ -272,22 +272,6 @@ export default function AdminRecipeForm({
                     </td>
                   </tr>
 
-                  {data.error?.topic && (
-                    <tr>
-                      <td colSpan={2} className="errors">
-                        {data.error.topic}
-                      </td>
-                    </tr>
-                  )}
-
-                  {data.error?.ingredients && (
-                    <tr>
-                      <td colSpan={2} className="errors">
-                        {data.error.ingredients}
-                      </td>
-                    </tr>
-                  )}
-
                   <tr>
                     <td></td>
 
@@ -400,36 +384,30 @@ export default function AdminRecipeForm({
                               </button>
                             </td>
                           </tr>
-
-                          {data.error?.item_name && (
-                            <tr>
-                              <td colSpan={2} className="errors">
-                                {data.error.item_name}
-                              </td>
-                            </tr>
-                          )}
-
-                          {data.error?.item_amount && (
-                            <tr>
-                              <td colSpan={2} className="errors">
-                                {data.error.item_amount}
-                              </td>
-                            </tr>
-                          )}
-
-                          {data.error?.items && (
-                            <tr>
-                              <td colSpan={2} className="errors">
-                                {data.error.items}
-                              </td>
-                            </tr>
-                          )}
                         </tbody>
                       </table>
                     </td>
                   </tr>
                 </React.Fragment>
               ))}
+
+              <tr>
+                <td colSpan={2} className="errors">
+                  {data.error?.topic && <div>{data.error.topic}</div>}
+
+                  {data.error?.ingredients && (
+                    <div>{data.error.ingredients}</div>
+                  )}
+
+                  {data.error?.item_name && <div>{data.error.item_name}</div>}
+
+                  {data.error?.item_amount && (
+                    <div>{data.error.item_amount}</div>
+                  )}
+
+                  {data.error?.items && <div> {data.error.items}</div>}
+                </td>
+              </tr>
 
               <tr>
                 <td colSpan={2}>
@@ -440,10 +418,6 @@ export default function AdminRecipeForm({
               </tr>
             </tbody>
           </table>
-
-          {data.error?.ingredients && (
-            <div className="errors">{data.error.ingredients}</div>
-          )}
         </div>
       </div>
 
@@ -501,22 +475,6 @@ export default function AdminRecipeForm({
                       />
                     </td>
                   </tr>
-
-                  {data.error?.topic && (
-                    <tr>
-                      <td colSpan={2} className="errors">
-                        {data.error.topic}
-                      </td>
-                    </tr>
-                  )}
-
-                  {data.error?.instructions && (
-                    <tr>
-                      <td colSpan={2} className="errors">
-                        {data.error.instructions}
-                      </td>
-                    </tr>
-                  )}
 
                   <tr>
                     <td></td>
@@ -605,28 +563,28 @@ export default function AdminRecipeForm({
                               </button>
                             </td>
                           </tr>
-
-                          {data.error?.item_name && (
-                            <tr>
-                              <td colSpan={2} className="errors">
-                                {data.error.step_instruction}
-                              </td>
-                            </tr>
-                          )}
-
-                          {data.error?.steps && (
-                            <tr>
-                              <td colSpan={2} className="errors">
-                                {data.error.steps}
-                              </td>
-                            </tr>
-                          )}
                         </tbody>
                       </table>
                     </td>
                   </tr>
                 </React.Fragment>
               ))}
+
+              <tr>
+                <td colSpan={2} className="errors">
+                  {data.error?.topic && <div>{data.error.topic}</div>}
+
+                  {data.error?.instruction && (
+                    <div>{data.error.instruction}</div>
+                  )}
+
+                  {data.error?.item_name && (
+                    <div>{data.error.step_instruction}</div>
+                  )}
+
+                  {data.error?.steps && <div>{data.error.steps}</div>}
+                </td>
+              </tr>
 
               <tr>
                 <td colSpan={2}>
@@ -637,10 +595,6 @@ export default function AdminRecipeForm({
               </tr>
             </tbody>
           </table>
-
-          {data.error?.instructions && (
-            <div className="errors">{data.error.instructions}</div>
-          )}
         </div>
       </div>
 
