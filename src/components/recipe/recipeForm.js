@@ -77,14 +77,47 @@ export default function RecipeForm({ initialData, recipeData }) {
             <h3>Instructions</h3>
 
             <div>
-              {recipeData.steps.map((step) => (
+              {/* {recipeData.steps.map((step) => (
                 <div className={styles.instructionGrid} key={step.step_id}>
                   <h4 className={styles.gridStep}>{step.step_number}.</h4>
                   <div className={styles.gridInstruction}>
                     {step.instruction}.
                   </div>
                 </div>
-              ))}
+              ))} */}
+              <table>
+              <tbody>
+                {recipeData.instructions.map((instruct, instructIndex) => (
+                  <React.Fragment key={instructIndex}>
+                    <tr>
+                      <td colSpan={4} className={styles.topic}>
+                        {instruct.topic}
+                      </td>
+                    </tr>
+
+                    <tr>
+                      <td className={styles.tableSpace}></td>
+                      <td
+                        className={`${styles.tableHeaders} ${styles.ingredient}`}
+                      >
+                        Step
+                      </td>
+                      <td className={`${styles.tableHeaders} ${styles.amount}`}>
+                        Instruction
+                      </td>
+                    </tr>
+
+                    {instruct.steps.map((step, stepIndex) => (
+                      <tr key={stepIndex}>
+                        <td></td>
+                        <td>{step.step_number}</td>
+                        <td>{step.instruction}</td>
+                      </tr>
+                    ))}
+                  </React.Fragment>
+                ))}
+              </tbody>
+            </table>
             </div>
           </div>
         </div>

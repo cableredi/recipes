@@ -50,6 +50,7 @@ export default function OrderedRecipesList({ recipes, admin = false }) {
                       <DeleteButton
                         transaction={item.recipe_id}
                         formAction={deleteRecipeAction}
+                        name="recipe"
                       />
                     </div>
 

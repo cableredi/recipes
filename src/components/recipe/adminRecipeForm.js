@@ -36,22 +36,86 @@ export default function AdminRecipeForm({
   };
 
   // Add a new Step
-  const addStep = () => {
-    const newStep = {
-      step_id: "",
-      instruction: "",
+  // const addStep = () => {
+  //   const newStep = {
+  //     step_id: "",
+  //     instruction: "",
+  //   };
+
+  //   setFormData({
+  //     ...formData,
+  //     steps: [...formData.steps, newStep],
+  //   });
+  // };
+  const addInstruction = () => {
+    const newInstruction = {
+      instruction_id: "",
+      topic: "",
+      steps: [],
     };
 
     setFormData({
       ...formData,
-      steps: [...formData.steps, newStep],
+      instructions: [...formData.instructions, newInstruction],
+    });
+  };
+
+  // Add a new Step under the selected Instruction
+  const addStep = (instructionIndex) => {
+    const newStep = {
+      step_id: "",
+      step_number: "",
+      instruction: "",
+    };
+
+    const updatedInstructions = formData.instructions.map(
+      (instruction, index) => {
+        if (index === instructionIndex) {
+          return {
+            ...instruction,
+            steps: [...instruction.steps, newStep],
+          };
+        }
+        return instruction;
+      }
+    );
+
+    setFormData({
+      ...formData,
+      instructions: updatedInstructions,
     });
   };
 
   // Remove a step
-  const removeStep = (index) => {
-    const updatedSteps = formData.steps.filter((_, i) => i !== index);
-    setFormData({ ...formData, steps: updatedSteps });
+  // const removeStep = (index) => {
+  //   const updatedSteps = formData.steps.filter((_, i) => i !== index);
+  //   setFormData({ ...formData, steps: updatedSteps });
+  // };
+  const removeStep = (instructionIndex, stepIndex) => {
+    const updatedInstructions = formData.instructions.map(
+      (instruction, index) => {
+        if (index === instructionIndex) {
+          return {
+            ...instruction,
+            steps: instruction.steps.filter((_, i) => i !== stepIndex),
+          };
+        }
+        return instruction;
+      }
+    );
+
+    setFormData({
+      ...formData,
+      instructions: updatedInstructions,
+    });
+  };
+
+  // Remove an Instruction
+  const removeInstruction = (index) => {
+    const updatedInstructions = formData.instructions.filter(
+      (_, i) => i !== index
+    );
+    setFormData({ ...formData, instructions: updatedInstructions });
   };
 
   // Add a new Ingredient
@@ -118,13 +182,8 @@ export default function AdminRecipeForm({
     setFormData({ ...formData, ingredients: updatedIngredients });
   };
 
-  console.log("FORMDATA");
-  console.log(formData);
-
   return (
     <form action={formAction} className={styles.recipeForm}>
-      <h3>New Recipe</h3>
-
       <div>
         <label htmlFor="recipe_name">Recipe Name</label>
         <input
@@ -391,7 +450,7 @@ export default function AdminRecipeForm({
       <div>
         <h3>Instructions</h3>
 
-        <div className={styles.flex}>
+        {/* <div className={styles.flex}>
           <div>
             <div>
               {formData.steps?.map((step, index) => (
@@ -445,6 +504,198 @@ export default function AdminRecipeForm({
               <div className="errors">{data.error.steps}</div>
             )}
           </div>
+        </div> */}
+
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th></th>
+                <th>Name</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {formData.instructions?.map((instruction, instructionIndex) => (
+                <React.Fragment key={instructionIndex}>
+                  <tr>
+                    <td>
+                      <input
+                        type="hidden"
+                        id="instructionID"
+                        name="instructionID"
+                        value={instruction.instruction_id || ""}
+                      />
+
+                      <button
+                        type="button"
+                        onClick={() => removeInstruction(instructionIndex)}
+                        className="plainButtonTrash"
+                      >
+                        <IoTrashOutline />
+                      </button>
+                    </td>
+
+                    <td>
+                      <input
+                        type="text"
+                        id="topic"
+                        name="topic"
+                        value={instruction.topic || ""}
+                        onChange={(e) => {
+                          const updatedInstructions = formData.instructions.map(
+                            (inst, index) =>
+                              index === instructionIndex
+                                ? { ...inst, topic: e.target.value }
+                                : inst
+                          );
+                          setFormData({
+                            ...formData,
+                            instructions: updatedInstructions,
+                          });
+                        }}
+                      />
+                    </td>
+                  </tr>
+
+                  {data.error?.topic && (
+                    <tr>
+                      <td colSpan={2} className="errors">
+                        {data.error.topic}
+                      </td>
+                    </tr>
+                  )}
+
+                  {data.error?.instructions && (
+                    <tr>
+                      <td colSpan={2} className="errors">
+                        {data.error.instructions}
+                      </td>
+                    </tr>
+                  )}
+
+                  <tr>
+                    <td></td>
+
+                    <td>
+                      <table>
+                        <thead>
+                          <tr>
+                            <th></th>
+                            <th>Step</th>
+                            <th>Instruction</th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          {instruction.steps.map((step, stepIndex) => (
+                            <React.Fragment key={stepIndex}>
+                              <tr>
+                                <td>
+                                  <input
+                                    type="hidden"
+                                    id="step_id"
+                                    name="step_id"
+                                    value={step.step_id || ""}
+                                  />
+
+                                  <button
+                                    type="button"
+                                    onClick={() =>
+                                      removeStep(instructionIndex, stepIndex)
+                                    }
+                                    className="plainButtonTrash"
+                                  >
+                                    <IoTrashOutline />
+                                  </button>
+                                </td>
+
+                                <td>{stepIndex + 1}</td>
+
+                                <td>
+                                  <input
+                                    type="text"
+                                    id="instruction"
+                                    name="instruction"
+                                    value={step.instruction || ""}
+                                    onChange={(e) => {
+                                      const updatedInstructions =
+                                        formData.instructions.map(
+                                          (inst, index) =>
+                                            index === instructionIndex
+                                              ? {
+                                                  ...inst,
+                                                  steps: inst.steps.map(
+                                                    (i, idx) =>
+                                                      idx === stepIndex
+                                                        ? {
+                                                            ...i,
+                                                            instruction:
+                                                              e.target.value,
+                                                          }
+                                                        : i
+                                                  ),
+                                                }
+                                              : inst
+                                        );
+                                      setFormData({
+                                        ...formData,
+                                        instructions: updatedInstructions,
+                                      });
+                                    }}
+                                  />
+                                </td>
+                              </tr>
+                            </React.Fragment>
+                          ))}
+
+                          <tr>
+                            <td></td>
+                            <td>
+                              <button
+                                type="button"
+                                onClick={() => addStep(instructionIndex)}
+                              >
+                                Add Step
+                              </button>
+                            </td>
+                          </tr>
+
+                          {data.error?.item_name && (
+                            <tr>
+                              <td colSpan={2} className="errors">
+                                {data.error.step_instruction}
+                              </td>
+                            </tr>
+                          )}
+
+                          {data.error?.steps && (
+                            <tr>
+                              <td colSpan={2} className="errors">
+                                {data.error.steps}
+                              </td>
+                            </tr>
+                          )}
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </React.Fragment>
+              ))}
+
+              <tr>
+                <td colSpan={2}>
+                  <button type="button" onClick={addInstruction}>
+                    Add New Instruction Category
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          {data.error?.instructions && (
+            <div className="errors">{data.error.instructions}</div>
+          )}
         </div>
       </div>
 
@@ -464,8 +715,8 @@ export default function AdminRecipeForm({
 
         <input
           type="hidden"
-          name="steps"
-          value={JSON.stringify(formData.steps)}
+          name="instructions"
+          value={JSON.stringify(formData.instructions)}
         />
 
         <FormSubmitButton btnPending="Saving" btnName="Save" />

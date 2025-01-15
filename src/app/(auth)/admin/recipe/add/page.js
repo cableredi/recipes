@@ -18,7 +18,7 @@ export default async function AddRecipePage() {
     recipe_name: "",
     recipe_category: "",
     recipe_image: "",
-    steps: [],
+    instructions: [],
     ingredients: [],
   };
 

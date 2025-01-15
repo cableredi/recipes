@@ -33,7 +33,7 @@ export default async function EditRecipePage({ params }) {
     recipe_id: recipe.recipe_id,
     recipe_name: recipe.name,
     recipe_category: recipe.category_id,
-    steps: recipe.steps,
+    instructions: recipe.instructions,
     ingredients: recipe.ingredients,
   };
 
