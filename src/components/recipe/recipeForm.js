@@ -36,7 +36,7 @@ export default function RecipeForm({ initialData, recipeData }) {
           <h3>Category: {recipeData.category.name}</h3>
 
           <div>
-            <h3>Ingredients</h3>
+            <h2>Ingredients</h2>
 
             <table>
               <tbody>
@@ -74,56 +74,50 @@ export default function RecipeForm({ initialData, recipeData }) {
           </div>
 
           <div className={styles.instructions}>
-            <h3>Instructions</h3>
+            <h2>Instructions</h2>
 
             <div>
-              {/* {recipeData.steps.map((step) => (
-                <div className={styles.instructionGrid} key={step.step_id}>
-                  <h4 className={styles.gridStep}>{step.step_number}.</h4>
-                  <div className={styles.gridInstruction}>
-                    {step.instruction}.
-                  </div>
-                </div>
-              ))} */}
               <table>
-              <tbody>
-                {recipeData.instructions.map((instruct, instructIndex) => (
-                  <React.Fragment key={instructIndex}>
-                    <tr>
-                      <td colSpan={4} className={styles.topic}>
-                        {instruct.topic}
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td className={styles.tableSpace}></td>
-                      <td
-                        className={`${styles.tableHeaders} ${styles.ingredient}`}
-                      >
-                        Step
-                      </td>
-                      <td className={`${styles.tableHeaders} ${styles.amount}`}>
-                        Instruction
-                      </td>
-                    </tr>
-
-                    {instruct.steps.map((step, stepIndex) => (
-                      <tr key={stepIndex}>
-                        <td></td>
-                        <td>{step.step_number}</td>
-                        <td>{step.instruction}</td>
+                <tbody>
+                  {recipeData.instructions.map((instruct, instructIndex) => (
+                    <React.Fragment key={instructIndex}>
+                      <tr>
+                        <td colSpan={4} className={styles.topic}>
+                          {instruct.topic}
+                        </td>
                       </tr>
-                    ))}
-                  </React.Fragment>
-                ))}
-              </tbody>
-            </table>
+
+                      <tr>
+                        <td className={styles.tableSpace}></td>
+                        <td
+                          className={`${styles.tableHeaders} ${styles.ingredient}`}
+                        >
+                          Step
+                        </td>
+                        <td
+                          className={`${styles.tableHeaders} ${styles.amount}`}
+                        >
+                          Instruction
+                        </td>
+                      </tr>
+
+                      {instruct.steps.map((step, stepIndex) => (
+                        <tr key={stepIndex}>
+                          <td></td>
+                          <td>{step.step_number}</td>
+                          <td>{step.instruction}</td>
+                        </tr>
+                      ))}
+                    </React.Fragment>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
 
         <div className={styles.gridNotes}>
-          <h3>Notes</h3>
+          <h2>Notes</h2>
 
           <div>
             <form action={formAction} className={styles.recipeForm}>

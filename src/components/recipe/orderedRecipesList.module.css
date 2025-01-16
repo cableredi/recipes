@@ -9,6 +9,10 @@
   font-size: 2rem;
 }
 
+.bullet li {
+  margin-bottom: 10px;
+}
+
 .flex {
   display: flex;
   flex-direction: row;
