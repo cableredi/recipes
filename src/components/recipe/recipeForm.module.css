@@ -49,6 +49,8 @@
 .topic {
   font-weight: 700;
   font-size: 1.1rem;
+  padding-top: 20px;
+  border-bottom: 1px solid var(--font-color);
 }
 
 .tableHeaders {
