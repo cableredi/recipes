@@ -6,7 +6,11 @@ export const getRecipe = async (recipe_id) => {
     include: {
       instructions: {
         include: {
-          steps: true,
+          steps: {
+            orderBy: {
+              step_number: "asc",
+            }
+          },
         },
       },
       ingredients: {
