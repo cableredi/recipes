@@ -72,48 +72,6 @@ export default function RecipeForm({ initialData, recipeData }) {
               </tbody>
             </table>
           </div>
-
-          <div className={styles.instructions}>
-            <h2>Instructions</h2>
-
-            <div>
-              <table>
-                <tbody>
-                  {recipeData.instructions.map((instruct, instructIndex) => (
-                    <React.Fragment key={instructIndex}>
-                      <tr>
-                        <td colSpan={4} className={styles.topic}>
-                          {instruct.topic}
-                        </td>
-                      </tr>
-
-                      <tr>
-                        <td className={styles.tableSpace}></td>
-                        <td
-                          className={`${styles.tableHeaders} ${styles.ingredient}`}
-                        >
-                          Step
-                        </td>
-                        <td
-                          className={`${styles.tableHeaders} ${styles.amount}`}
-                        >
-                          Instruction
-                        </td>
-                      </tr>
-
-                      {instruct.steps.map((step, stepIndex) => (
-                        <tr key={stepIndex}>
-                          <td></td>
-                          <td>{step.step_number}</td>
-                          <td>{step.instruction}</td>
-                        </tr>
-                      ))}
-                    </React.Fragment>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
         </div>
 
         <div className={styles.gridNotes}>
@@ -139,6 +97,50 @@ export default function RecipeForm({ initialData, recipeData }) {
                 <EditorSubmitButton btnPending="Saving" btnName="Save" />
               </div>
             </form>
+          </div>
+        </div>
+
+        <div className={styles.gridInstructions}>
+          <div className={styles.instructions}>
+            <h2>Instructions</h2>
+
+            <div>
+              <table>
+                <tbody>
+                  {recipeData.instructions.map((instruct, instructIndex) => (
+                    <React.Fragment key={instructIndex}>
+                      <tr>
+                        <td colSpan={4} className={styles.topic}>
+                          {instruct.topic}
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td className={styles.tableSpace}></td>
+                        <td
+                          className={`${styles.tableHeaders}`}
+                        >
+                          Step
+                        </td>
+                        <td
+                          className={`${styles.tableHeaders}`}
+                        >
+                          Instruction
+                        </td>
+                      </tr>
+
+                      {instruct.steps.map((step, stepIndex) => (
+                        <tr key={stepIndex}>
+                          <td></td>
+                          <td>{step.step_number}</td>
+                          <td>{step.instruction}</td>
+                        </tr>
+                      ))}
+                    </React.Fragment>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>

@@ -4,10 +4,8 @@ export const getRecipe = async (recipe_id) => {
   const result = await prisma.recipes.findUnique({
     where: { recipe_id: Number(recipe_id) },
     include: {
-      //steps: true,
       instructions: {
         include: {
-          //stepsNew: true,
           steps: true,
         },
       },
@@ -59,21 +57,9 @@ export const addRecipe = async (recipe) => {
           category_id: recipe.category_id,
           name: recipe.name,
           image: "",
-          // steps: {
-          //   create: recipe.steps.map((step, index) => ({
-          //     step_number: index + 1,
-          //     instruction: step.instruction,
-          //   })),
-          // },
           instructions: {
             create: recipe.instructions.map((instruction, index) => ({
               topic: instruction.topic,
-              // stepsNew: {
-              //   create: step.stepsNew.map((item) => ({
-              //     step_number: index + 1,
-              //     instruction: item.instruction,
-              //   })),
-              // }
               steps: {
                 create: instruction.steps.map((step) => ({
                   step_number: index + 1,
@@ -121,24 +107,6 @@ export const editRecipe = async (recipe) => {
           category_id: Number(recipe.category_id),
           name: recipe.name,
           image: "",
-          // steps: {
-          //   deleteMany: {
-          //     step_id: {
-          //       notIn: recipe.steps.map((step) => step.step_id || 0), // Delete steps not in the incoming array
-          //     },
-          //   },
-          //   upsert: recipe.steps.map((step, index) => ({
-          //     where: { step_id: step.step_id || 0 }, // Match by step ID, or add if it's new
-          //     create: {
-          //       step_number: index + 1,
-          //       instruction: step.instruction,
-          //     },
-          //     update: {
-          //       step_number: index + 1,
-          //       instruction: step.instruction,
-          //     },
-          //   })),
-          // },
           instructions: {
             deleteMany: {
               instruction_id: {
@@ -151,9 +119,7 @@ export const editRecipe = async (recipe) => {
               where: { instruction_id: instruct.instruction_id || 0 }, // Match by ingredient ID, or add if it's new
               create: {
                 topic: instruct.topic,
-                // stepsNew: {
                 steps: {
-                  // create: instruct.stepsNew.map((step, index) => ({
                   create: instruct.steps.map((step, index) => ({
                     step_number: index + 1,
                     instruction: step.instruction,
@@ -166,11 +132,9 @@ export const editRecipe = async (recipe) => {
                 steps: {
                   deleteMany: {
                     step_id: {
-                      // notIn: instruct.stepsNew.map((step) => step.step_id || 0), // Delete items not in the incoming array
                       notIn: instruct.steps.map((step) => step.step_id || 0), // Delete items not in the incoming array
                     },
                   },
-                  // upsert: instruct.stepsNew.map((step, index) => ({
                   upsert: instruct.steps.map((step, index) => ({
                     where: { step_id: step.step_id || 0 }, // Match by item ID, or add if it's new
                     create: {
